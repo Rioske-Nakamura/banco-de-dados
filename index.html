@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dados dos Alunos</title>
+</head>
+<body>
+  <h1>Registros de Alunos</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>RA</th>
+        <th>Data de Nascimento</th>
+        <th>CPF</th>
+        <th>Educação</th>
+      </tr>
+    </thead>
+    <tbody id="dados-tabela"></tbody>
+  </table>
+
+  <script>
+    async function fetchDados() {
+      try {
+        const response = await fetch('http://localhost:3000/dados');
+        const data = await response.json();
+
+        const tabela = document.getElementById('dados-tabela');
+        tabela.innerHTML = ''; // Limpa o conteúdo antes de exibir
+
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${row.id}</td>
+            <td>${row.nome}</td>
+            <td>${row.ra}</td>
+            <td>${row.data_nascimento}</td>
+            <td>${row.cpf}</td>
+            <td>${row.educacao || ''}</td>
+          `;
+          tabela.appendChild(tr);
+        });
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    }
+
+    fetchDados();
+  </script>
+</body>
+</html>

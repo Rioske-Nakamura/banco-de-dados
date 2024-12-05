@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^4.21.1",
+    "pg": "^8.13.1",
+    "serve": "^14.2.4"
+  },
+  "name": "vc-me-deve-um-ourico",
+  "version": "1.0.0",
+  "main": "serve.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
